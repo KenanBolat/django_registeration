@@ -136,3 +136,5 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
 }
+
+AUTH_USER_MODEL = "users.User"
