@@ -3,7 +3,9 @@
 set -e
 
 python manage.py wait_for_db
-python manage.py collectstatic --noinput
+#python manage.py collectstatic --noinput
 python manage.py migrate
 
-uwsgi --socket :8000 --workers 4 --master --enable-threads --module app.wsgi
+#uwsgi --socket :8000 --workers 4 --master --enable-threads --module auth_service.wsgi
+
+python manage.py runserver
