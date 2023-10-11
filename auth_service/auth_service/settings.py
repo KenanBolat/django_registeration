@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-_n5x_65e&q%pu@31)4n50urxl&1o_b&r86jx(q6-e+qovp@^%!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '0.0.0.0'
+    '0.0.0.0',
+    '127.0.0.1'
 ]
 
 # Application definition
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
+    'rest_framework',
     'users',
 ]
 
@@ -140,3 +142,4 @@ JWT_AUTH = {
 }
 
 AUTH_USER_MODEL = "users.User"
+

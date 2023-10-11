@@ -12,11 +12,11 @@ jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register(request):
-    username = request.data.get('username')
+    email = request.data.get('email')
     password = request.data.get('password')
-    if not username or not password:
-        return Response({'error': 'Username and Password required'}, status=status.HTTP_400_BAD_REQUEST)
-    user, created = User.objects.get_or_create(username=username)
+    if not email or not password:
+        return Response({'error': 'Email and Password required'}, status=status.HTTP_400_BAD_REQUEST)
+    user, created = User.objects.get_or_create(email=email)
     if created:
         user.set_password(password)
         user.save()
@@ -29,10 +29,10 @@ def register(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login(request):
-    username = request.data.get('username')
+    email = request.data.get('email')
     password = request.data.get('password')
     try:
-        user = User.objects.get(username=username)
+        user = User.objects.get(email=email)
         if user.check_password(password):
             payload = jwt_payload_handler(user)
             token = jwt_encode_handler(payload)
